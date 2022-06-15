@@ -6,7 +6,7 @@ int main()
 	
 	int bt[5] = {4,8,5,4,7};
 	float avg_wt,avg_tat;
-	int wt[4],tat[4],i,j,total=0,pos,temp;
+	int wt[5],tat[5],i,j,total=0,pos,temp;
 	 for(i=0;i<n;i++)
 	    {
 		pos=i;
@@ -48,6 +48,17 @@ int main()
 		printf("\np%d\t    %d\t        \t%d\t  \t%d",p[i],bt[i],wt[i],tat[i]);
 	    }
 	    
+	    printf("\n*****Gantt Chart*****\n");
+	    printf("-------------------------\n|");
+	    for(int i=0;i<n;i++){
+	    printf("%d   |",p[i]);
+	    }
+	    printf("\n-------------------------\n");
+	    printf("%d    ",0);
+	    for(int i=0;i<n;i++){
+		printf("%d   ",tat[i]);
+	    }
+	     
 	    int total_tat = total;
 	    avg_tat=(float)total/n;  
 	    printf("\nTotal waiting time = %d\n", total_wt);
