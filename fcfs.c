@@ -35,12 +35,27 @@ void findavgTime( int processes[], int n, int bt[])
 	}
 	float s=(float)total_wt / (float)n;
 	float t=(float)total_tat / (float)n;
-	printf("Total waiting time = %d\n", total_wt);
+	
+	
+	printf("*****Gantt Chart*****\n");
+	printf("---------------------\n|");
+	for(int i=0;i<n;i++){
+	    printf("%d   |",processes[i]);
+	}
+	printf("\n---------------------\n");
+	printf("%d    ",0);
+	for(int i=0;i<n;i++){
+		printf("%d   ",tat[i]);
+	}
+	
+	
+	printf("\nTotal waiting time = %d\n", total_wt);
 	printf("Total Turn around time = %d\n", total_tat);
 	printf("Average waiting time = %f\n",s);
 	printf("Average turn around time = %f ",t);
 	printf("\n");
 }
+
 
 int main()
 {
@@ -50,5 +65,6 @@ int main()
 	int burst_time[] = {8,12,11,4};
 
 	findavgTime(processes, n, burst_time);
+	
 	return 0;
 }
