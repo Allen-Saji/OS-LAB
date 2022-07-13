@@ -5,6 +5,7 @@ void firstFit(int blockSize[], int m, int processSize[], int n)
 {
 	int i, j;
 	int allocation[n];
+	int new_block[m];
 
 	
 	for(i = 0; i < n; i++)
@@ -19,21 +20,25 @@ void firstFit(int blockSize[], int m, int processSize[], int n)
 			if (blockSize[j] >= processSize[i])
 			{
 				allocation[i] = j;
+				new_block[j] = blockSize[j];
 				blockSize[j] -= processSize[i];
 				break; 
 			}
 		}
 	}
 
-	printf("\nProcess No.\tProcess Size\tBlock no.\n");
+	printf("\nProcess No.\tProcess Size\t\t\tBlock no.\t\t\tBlock Size\n");
 	for (int i = 0; i < n; i++)
 	{
 		printf(" %i\t\t\t", i+1);
 		printf("%i\t\t\t\t", processSize[i]);
-		if (allocation[i] != -1)
-			printf("%i", allocation[i] + 1);
-		else
+		
+		if (allocation[i] != -1){
+			printf("%i\t\t\t", allocation[i] + 1);
+			printf("%d\t\t\t",new_block[allocation[i]] );
+		}else
 			printf("Not Allocated");
+		
 		printf("\n");
 	}
 }
