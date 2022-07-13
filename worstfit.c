@@ -1,29 +1,42 @@
 
 #include<stdio.h>
 
-void firstFit(int blockSize[], int m, int processSize[], int n)
+
+void worstFit(int blockSize[], int m, int processSize[],int n)
 {
-	int i, j;
 	int allocation[n];
 	int new_block[m];
-
 	
-	for(i = 0; i < n; i++)
+	for(int k=0;k<m;k++){
+	     new_block[k] = blockSize[k];
+	}
+	
+
+	for(int i = 0; i < n; i++)
 	{
 		allocation[i] = -1;
 	}
 
-	for (i = 0; i < n; i++)	 
+	for (int i=0; i<n; i++)
 	{
-		for (j = 0; j < m; j++)	
+		
+		int wstIdx = -1;
+		for (int j=0; j<m; j++)
 		{
 			if (blockSize[j] >= processSize[i])
 			{
-				allocation[i] = j;
-				new_block[j] = blockSize[j];
-				blockSize[j] -= processSize[i];
-				break; 
+				if (wstIdx == -1)
+					wstIdx = j;
+				else if (blockSize[wstIdx] < blockSize[j])
+					wstIdx = j;
 			}
+		}
+
+	
+		if (wstIdx != -1)
+		{
+			allocation[i] = wstIdx;
+			blockSize[wstIdx] -= processSize[i];
 		}
 	}
 
@@ -41,7 +54,13 @@ void firstFit(int blockSize[], int m, int processSize[], int n)
 		
 		printf("\n");
 	}
+	
+	printf("\n");
+	
+	
+	
 }
+
 
 int main()
 {
@@ -64,8 +83,7 @@ int main()
 		scanf("%d",&processSize[i]);
 	}
 	
-	
-	firstFit(blockSize, m, processSize, n);
+	worstFit(blockSize, m, processSize, n);
 
 	return 0 ;
 }
