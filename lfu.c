@@ -10,7 +10,7 @@ int main()
 {
             int i,j,k,n,page[50],frameno,frame[10],move=0,flag,count=0,count1[10]={0},
                         repindex,leastcount;
-            float rate;
+            
             printf("Enter the number of pages\n");
             scanf("%d",&n);
             printf("Enter the page reference numbers\n");
@@ -35,7 +35,7 @@ int main()
                                                 break;
                                     }
                         }
-                        if(flag==0&&count<frameno)
+                        if(flag==0 && count<frameno)
                         {
                                     frame[move]=page[i];
                                     count1[move]=1;
@@ -62,8 +62,8 @@ int main()
                                     print(frameno,frame);
                         }
             }
-            rate=(float)count/(float)n;
+            
             printf("Number of page faults is %d\n",count);
-            printf("Fault rate is %f\n",rate);
+            
             return 0;
 }
