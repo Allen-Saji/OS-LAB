@@ -2,6 +2,7 @@
 // FCFS Disk Scheduling algorithm
 
 #include <stdio.h>
+#include<stdlib.h>
 
 int size = 8;
 
@@ -13,7 +14,7 @@ void FCFS(int arr[], int head)
 	for (int i = 0; i < size; i++) {
 		cur_track = arr[i];
 
-		distance = cur_track - head;
+		distance = abs(cur_track - head);
 
 		seek_count += distance;
 
